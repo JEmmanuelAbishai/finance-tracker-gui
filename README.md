@@ -3,7 +3,7 @@
 # INTRODUCTION
 
 Splash is a desktop-based Personal Finance Tracker application built with Python, SQLite, Matplotlib, Pandas, and CustomTkinter. 
-This app helps users record, analyze, visualizetheir financial transactions easily through a user-friendly interface.
+This app helps users record, analyze, visualize their financial transactions easily through a user-friendly interface.
 
 ## FEATURES
 
