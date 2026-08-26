@@ -1,6 +1,16 @@
+
+<div align="center">
+
 # Splash Finance Tracker
 
-Splash is a desktop-based Personal Finance Tracker application built with Python, utilizing `CustomTkinter` for the GUI, `Pandas`/`Matplotlib` for data analysis, and `SQLite` for persistent storage.
+**Desktop-based personal finance management with real-time analytics & local SQLite storage**
+
+[![Python](https://img.shields.io/badge/Python-3.x-3776AB?logo=python&logoColor=white)](https://python.org)
+[![CustomTkinter](https://img.shields.io/badge/CustomTkinter-GUI-blue?logo=python&logoColor=white)](https://github.com/TomSchimansky/CustomTkinter)
+[![Pandas](https://img.shields.io/badge/Pandas-Data-150458?logo=pandas&logoColor=white)](https://pandas.pydata.org)
+[![SQLite](https://img.shields.io/badge/SQLite-Database-003B57?logo=sqlite&logoColor=white)](https://sqlite.org)
+
+</div>
 
 ## Display 
 <div align="center">
