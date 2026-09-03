@@ -32,7 +32,10 @@ graph TD
 ```
 
 ---
-Based on the project structure of `finance-tracker-gui`, here is a suggested `README.md` structure. Since this is a desktop application using `CustomTkinter` and `SQLite`, the architecture focuses on the separation between the UI layer, the logic/data layer, and the persistent storage.
+
+Pipeline
+
+---
 
 ```mermaid
 classDiagram
