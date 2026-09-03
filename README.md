@@ -33,9 +33,7 @@ graph TD
 
 ---
 
-Pipeline
-
----
+## Pipeline
 
 ```mermaid
 classDiagram
