@@ -1,7 +1,7 @@
 import os
 import tkinter.font as tkfont
 
-APP_NAME = "Ledger"
+APP_NAME = "Splash"
 APP_MIN_SIZE = (1180, 720)
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
