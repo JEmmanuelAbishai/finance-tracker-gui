@@ -5,7 +5,7 @@ import customtkinter as ctk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 from .. import charts, config, data_processing as dp, database
-from . import components
+from . import comp
 
 
 class DashboardView(ctk.CTkFrame):
@@ -115,7 +115,7 @@ class DashboardView(ctk.CTkFrame):
             ("Savings rate", f"{savings:,.0f}%", "amber" if savings < 15 else "accent", ""),
         ]
         for i, (title, value, key, subtitle) in enumerate(cards):
-            card = components.StatCard(self.stats_frame, theme, title, value, key, subtitle)
+            card = comp.StatCard(self.stats_frame, theme, title, value, key, subtitle)
             card.grid(row=0, column=i, sticky="ew", padx=6)
 
         for holder in (self.donut_holder, self.budget_holder):
