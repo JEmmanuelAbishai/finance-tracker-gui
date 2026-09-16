@@ -78,6 +78,7 @@ class TransactionsView(ctk.CTkFrame):
 
         btn_wrap = ctk.CTkFrame(card, fg_color="transparent")
         btn_wrap.grid(row=11, column=0, sticky="ew", padx=20, pady=(14, 20))
+
         ctk.CTkButton(
             btn_wrap, text="Add transaction", command=self._add_transaction,
             fg_color=theme["accent"], hover_color=theme["accent_hover"],
@@ -130,6 +131,7 @@ class TransactionsView(ctk.CTkFrame):
         headers = {
             "date": "Date", "category": "Category", "description": "Description", "amount": "Amount",
         }
+
         widths = {"date": 100, "category": 150, "description": 150, "amount": 110}
         stretch = {"date": False, "category": False, "description": True, "amount": False}
         for col in columns:
