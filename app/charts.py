@@ -59,7 +59,7 @@ def category_donut(breakdown, theme, figsize=(4.8, 4.0)):
         wedgeprops={"width": 0.38, "edgecolor": theme["surface"], "linewidth": 3},
     )
     total = values.sum()
-    ax.text(0, 0.08, f"${total:,.0f}", ha="center", va="center",
+    ax.text(0, 0.08, f"¤{total:,.0f}", ha="center", va="center",
             fontsize=17, fontweight="bold", color=theme["text"])
     ax.text(0, -0.16, "this month", ha="center", va="center",
             fontsize=8.5, color=theme["text_muted"])
@@ -67,7 +67,7 @@ def category_donut(breakdown, theme, figsize=(4.8, 4.0)):
 
     ax.legend(
         wedges,
-        [f"{label}   ${value:,.0f}" for label, value in zip(labels, values)],
+        [f"{label}   ¤{value:,.0f}" for label, value in zip(labels, values)],
         loc="center left",
         bbox_to_anchor=(1.0, 0.5),
         frameon=False,
@@ -76,10 +76,7 @@ def category_donut(breakdown, theme, figsize=(4.8, 4.0)):
         handlelength=1.1,
         handleheight=1.1,
     )
-    # Fixed fractional margins rather than tight_layout(): the embedded
-    # Tkinter frame is often narrower than `figsize` implies, and
-    # tight_layout's margins are computed for the original size, so they
-    # under-allocate room for the legend once TkAgg rescales the canvas.
+    
     fig.subplots_adjust(left=0.02, right=0.48, top=0.95, bottom=0.05)
     return fig
 
@@ -111,13 +108,11 @@ def budget_bars(status_df, theme, figsize=(6.4, 4.2)):
 
     ax.set_yticks(list(y_pos))
     ax.set_yticklabels(df["category"], color=theme["text"], fontsize=9.5)
-    ax.xaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f"${x:,.0f}"))
+    ax.xaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f"¤{x:,.0f}"))
     ax.set_xlim(left=0)
     ax.grid(axis="x", color=theme["border"], linewidth=0.6, alpha=0.6)
     ax.set_axisbelow(True)
-    # Fixed left margin sized for the longest category label ("Health &
-    # Fitness"), so it never gets clipped when TkAgg rescales the canvas
-    # to a container narrower than `figsize`.
+
     fig.subplots_adjust(left=0.32, right=0.97, top=0.96, bottom=0.12)
     return fig
 
@@ -143,7 +138,7 @@ def trend_lines(trend_df, theme, figsize=(8.6, 3.6)):
 
     ax.set_xticks(list(x))
     ax.set_xticklabels(trend_df["label"], color=theme["text_muted"], fontsize=9)
-    ax.yaxis.set_major_formatter(mticker.FuncFormatter(lambda v, _: f"${v:,.0f}"))
+    ax.yaxis.set_major_formatter(mticker.FuncFormatter(lambda v, _: f"¤{v:,.0f}"))
     ax.grid(axis="y", color=theme["border"], linewidth=0.6, alpha=0.6)
     ax.set_axisbelow(True)
     ax.legend(loc="upper left", frameon=False, fontsize=9, labelcolor=theme["text"])

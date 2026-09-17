@@ -196,5 +196,5 @@ class TransactionsView(ctk.CTkFrame):
             sign = "+" if tx_type == "income" else "-"
             self.tree.insert(
                 "", "end", tags=(str(tx_id), f"{tx_type}_row"),
-                values=(tx_date, category, description or "-", f"{sign}${amount:,.2f}"),
+                values=(tx_date, category, description or "-", f"{sign}¤{amount:,.2f}"),
             )

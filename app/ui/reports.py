@@ -79,6 +79,6 @@ class ReportsView(ctk.CTkFrame):
             fill.place(relx=0, rely=0, relwidth=max(0.02, pct), relheight=1)
 
             ctk.CTkLabel(
-                row, text=f"${amount:,.0f}", font=config.FONTS["mono"], text_color=theme["text_muted"],
+                row, text=f"¤{amount:,.0f}", font=config.FONTS["mono"], text_color=theme["text_muted"],
                 width=80, anchor="e",
             ).grid(row=0, column=2, sticky="e")

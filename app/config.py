@@ -20,9 +20,7 @@ def _first_available_font(candidates):
     return candidates[-1]
 
 
-# NOTE: these are placeholder values only. They're set for real by
-# init_fonts(), which must be called AFTER a Tk/CTk root window exists —
-# tkfont.families() can't see installed/registered fonts before that.
+
 UI_FONT = "TkDefaultFont"
 MONO_FONT = "TkFixedFont"
 

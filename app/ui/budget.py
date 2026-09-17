@@ -59,7 +59,7 @@ class BudgetView(ctk.CTkFrame):
                 top, text=category, font=config.FONTS["body"], text_color=theme["text"]
             ).grid(row=0, column=0, sticky="w")
             value_label = ctk.CTkLabel(
-                top, text=f"${current:,.0f} / mo", font=config.FONTS["mono"], text_color=theme["accent"]
+                top, text=f"¤{current:,.0f} / mo", font=config.FONTS["mono"], text_color=theme["accent"]
             )
             value_label.grid(row=0, column=1, sticky="e")
             self.value_labels[category] = value_label
@@ -76,7 +76,7 @@ class BudgetView(ctk.CTkFrame):
             self.sliders[category] = slider
 
     def _on_slide(self, category, value):
-        self.value_labels[category].configure(text=f"${value:,.0f} / mo")
+        self.value_labels[category].configure(text=f"¤{value:,.0f} / mo")
 
     def _save(self):
         for category, slider in self.sliders.items():
