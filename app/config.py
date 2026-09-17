@@ -73,7 +73,7 @@ PALETTE = {
         "border": "#333C42",
         "text": "#F3F1EB",
         "text_muted": "#8E9AA3",
-        "accent": "#2BB693",
+        "accent": "#2C1092",
         "accent_hover": "#249C7E",
         "amber": "#E3A23D",
         "coral": "#E2685A",

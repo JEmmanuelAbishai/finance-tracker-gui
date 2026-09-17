@@ -23,7 +23,6 @@ class TransactionsView(ctk.CTkFrame):
         self._build_table()
         self.refresh()
 
-    # -- entry form -----------------------------------------------------
     def _build_form(self):
         theme = self.theme
         card = ctk.CTkFrame(self, corner_radius=12, fg_color=theme["surface"], width=280)
@@ -91,7 +90,6 @@ class TransactionsView(ctk.CTkFrame):
         self.category_menu.configure(values=cats)
         self.category_var.set(cats[0])
 
-    # -- table ------------------------------------------------------------
     def _build_table(self):
         theme = self.theme
         card = ctk.CTkFrame(self, corner_radius=12, fg_color=theme["surface"])
@@ -126,6 +124,49 @@ class TransactionsView(ctk.CTkFrame):
             foreground=[("selected", "#FFFFFF")],
         )
 
+        style.layout(
+            "Ledger.Vertical.TScrollbar",
+            [("Vertical.Scrollbar.trough", {
+                "sticky": "ns",
+                "children": [("Vertical.Scrollbar.thumb", {"expand": "1", "sticky": "nswe"})],
+            })],
+        )
+        style.layout(
+            "Ledger.Horizontal.TScrollbar",
+            [("Horizontal.Scrollbar.trough", {
+                "sticky": "ew",
+                "children": [("Horizontal.Scrollbar.thumb", {"expand": "1", "sticky": "nswe"})],
+            })],
+        )
+        style.configure(
+            "Ledger.Vertical.TScrollbar",
+            background=theme["border"],      
+            troughcolor=theme["surface"],     
+            bordercolor=theme["surface"],
+            lightcolor=theme["border"],
+            darkcolor=theme["border"],
+            relief="flat",
+            width=10,
+        )
+        style.configure(
+            "Ledger.Horizontal.TScrollbar",
+            background=theme["border"],
+            troughcolor=theme["surface"],
+            bordercolor=theme["surface"],
+            lightcolor=theme["border"],
+            darkcolor=theme["border"],
+            relief="flat",
+            width=10,
+        )
+        style.map(
+            "Ledger.Vertical.TScrollbar",
+            background=[("active", theme["text_muted"])],  
+        )
+        style.map(
+            "Ledger.Horizontal.TScrollbar",
+            background=[("active", theme["text_muted"])],
+        )
+
         columns = ("date", "category", "description", "amount")
         self.tree = ttk.Treeview(card, columns=columns, show="headings", style="Ledger.Treeview")
         headers = {
@@ -142,8 +183,12 @@ class TransactionsView(ctk.CTkFrame):
             )
         self.tree.grid(row=1, column=0, sticky="nsew", padx=(16, 0), pady=(0, 16))
 
-        v_scroll = ttk.Scrollbar(card, orient="vertical", command=self.tree.yview)
-        h_scroll = ttk.Scrollbar(card, orient="horizontal", command=self.tree.xview)
+        v_scroll = ttk.Scrollbar(
+            card, orient="vertical", command=self.tree.yview, style="Ledger.Vertical.TScrollbar"
+        )
+        h_scroll = ttk.Scrollbar(
+            card, orient="horizontal", command=self.tree.xview, style="Ledger.Horizontal.TScrollbar"
+        )
         self.tree.configure(yscrollcommand=v_scroll.set, xscrollcommand=h_scroll.set)
         v_scroll.grid(row=1, column=1, sticky="ns", padx=(0, 16), pady=(0, 16))
         h_scroll.grid(row=2, column=0, sticky="ew", padx=(16, 0), pady=(0, 12))
