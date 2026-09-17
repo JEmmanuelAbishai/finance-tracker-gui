@@ -20,12 +20,11 @@ def _first_available_font(candidates):
     return candidates[-1]
 
 
-UI_FONT = _first_available_font(
-    ["Segoe UI", "Helvetica Neue", "Ubuntu", "Arial", "TkDefaultFont"]
-)
-MONO_FONT = _first_available_font(
-    ["Consolas", "SF Mono", "Ubuntu Mono", "Courier New", "TkFixedFont"]
-)
+# NOTE: these are placeholder values only. They're set for real by
+# init_fonts(), which must be called AFTER a Tk/CTk root window exists —
+# tkfont.families() can't see installed/registered fonts before that.
+UI_FONT = "TkDefaultFont"
+MONO_FONT = "TkFixedFont"
 
 FONTS = {
     "h1": (UI_FONT, 25, "bold"),
@@ -37,6 +36,36 @@ FONTS = {
     "figure": (MONO_FONT, 22, "bold"),
     "mono": (MONO_FONT, 13, "normal"),
 }
+
+
+def init_fonts():
+    """
+    Re-resolve UI_FONT / MONO_FONT now that a Tk root exists, preferring
+    JetBrains Mono (registered via app.fonts.load_custom_fonts()) for
+    both the UI and mono roles, and rebuild FONTS IN PLACE so any module
+    that already did `from app.config import FONTS` still sees the update.
+    """
+    global UI_FONT, MONO_FONT
+
+    UI_FONT = _first_available_font(
+        ["JetBrains Mono", "Segoe UI", "Helvetica Neue", "Ubuntu", "Arial", "TkDefaultFont"]
+    )
+    MONO_FONT = _first_available_font(
+        ["JetBrains Mono", "Consolas", "SF Mono", "Ubuntu Mono", "Courier New", "TkFixedFont"]
+    )
+
+    FONTS.clear()
+    FONTS.update({
+        "h1": (UI_FONT, 25, "bold"),
+        "h2": (UI_FONT, 18, "bold"),
+        "h3": (UI_FONT, 14, "bold"),
+        "body": (UI_FONT, 13, "normal"),
+        "small": (UI_FONT, 11, "normal"),
+        "nav": (UI_FONT, 13, "normal"),
+        "figure": (MONO_FONT, 22, "bold"),
+        "mono": (MONO_FONT, 13, "normal"),
+    })
+
 
 PALETTE = {
     "dark": {
