@@ -1,7 +1,7 @@
 import customtkinter as ctk
 
 from .. import config
-from . import components
+from . import comp
 from .budget import BudgetView
 from .dashboard import DashboardView
 from .reports import ReportsView
@@ -55,7 +55,7 @@ class AppWindow(ctk.CTkFrame):
         ).grid(row=1, column=0, sticky="w", padx=22, pady=(0, 22))
 
         for i, (name, _) in enumerate(self.NAV_ITEMS, start=2):
-            btn = components.SidebarButton(sidebar, theme, name, command=lambda n=name: self._show(n))
+            btn = comp.SidebarButton(sidebar, theme, name, command=lambda n=name: self._show(n))
             btn.grid(row=i, column=0, sticky="ew", padx=10, pady=2)
             self.nav_buttons[name] = btn
 
