@@ -1,4 +1,7 @@
+import os
+
 import customtkinter as ctk
+from PIL import Image
 
 from .. import config, database
 
@@ -10,7 +13,21 @@ class LoginView(ctk.CTkFrame):
         self.on_success = on_success
         self.mode = "login" if database.has_any_user() else "register"
         self.pack(fill="both", expand=True)
+
+        self._build_background()
         self._build()
+
+    def _build_background(self):
+        bg_path = os.path.join(
+            os.path.dirname(os.path.abspath(__file__)), "..", "assets", "images", "login_bg.png"
+        )
+        img = Image.open(bg_path).convert("RGB")
+        bg_image = ctk.CTkImage(light_image=img, dark_image=img, size=config.APP_MIN_SIZE)
+
+        self.bg_label = ctk.CTkLabel(self, image=bg_image, text="")
+        self.bg_label.image = bg_image  # keep a reference so it isn't garbage-collected
+        self.bg_label.place(x=0, y=0, relwidth=1, relheight=1)
+        self.bg_label.lower()
 
     def _build(self):
         theme = self.theme

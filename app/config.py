@@ -2,7 +2,7 @@ import os
 import tkinter.font as tkfont
 
 APP_NAME = "Splash"
-APP_MIN_SIZE = (1180, 720)
+APP_MIN_SIZE = (1000, 600)
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(BASE_DIR, "data")
