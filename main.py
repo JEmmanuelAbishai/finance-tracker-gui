@@ -1,7 +1,7 @@
-
 import customtkinter as ctk
 
 from app import config, database
+from app.fonts import load_custom_fonts
 from app.ui.app_window import AppWindow
 from app.ui.login import LoginView
 
@@ -9,6 +9,10 @@ from app.ui.login import LoginView
 class SplashApp(ctk.CTk):
     def __init__(self):
         super().__init__()
+
+        load_custom_fonts()
+        config.init_fonts()
+
         self.title(config.APP_NAME)
         self.geometry(f"{config.APP_MIN_SIZE[0]}x{config.APP_MIN_SIZE[1]}")
         self.minsize(*config.APP_MIN_SIZE)
