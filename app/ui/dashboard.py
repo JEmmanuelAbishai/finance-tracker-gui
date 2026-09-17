@@ -104,14 +104,14 @@ class DashboardView(ctk.CTkFrame):
             w.destroy()
 
         cards = [
-            ("Income", f"${income:,.0f}", "blue", ""),
+            ("Income", f"¤{income:,.0f}", "blue", ""),
             (
                 "Expenses",
-                f"${expense:,.0f}",
+                f"¤{expense:,.0f}",
                 "coral" if total_budget and expense > total_budget else "accent",
-                f"of ${total_budget:,.0f} budgeted" if total_budget else "no budget set",
+                f"of ¤{total_budget:,.0f} budgeted" if total_budget else "no budget set",
             ),
-            ("Net", f"${net:,.0f}", "accent" if net >= 0 else "coral", ""),
+            ("Net", f"¤{net:,.0f}", "accent" if net >= 0 else "coral", ""),
             ("Savings rate", f"{savings:,.0f}%", "amber" if savings < 15 else "accent", ""),
         ]
         for i, (title, value, key, subtitle) in enumerate(cards):
