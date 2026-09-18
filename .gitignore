@@ -4,3 +4,7 @@ __pycache__/
 venv/
 data/finance_tracker.db
 .DS_Store
+build/
+dist/
+*.spec/
+data/
