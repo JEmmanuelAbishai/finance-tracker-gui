@@ -20,7 +20,7 @@ class ReportsView(ctk.CTkFrame):
         self.trend_card = ctk.CTkFrame(self, corner_radius=12, fg_color=theme["surface"])
         self.trend_card.grid(row=1, column=0, sticky="ew", padx=24, pady=(6, 10))
         ctk.CTkLabel(
-            self.trend_card, text="Income vs. expenses \u2014 last 6 months",
+            self.trend_card, text="Income vs. Expenses \u2014 last 6 months",
             font=config.FONTS["h3"], text_color=theme["text"],
         ).pack(anchor="w", padx=18, pady=(16, 0))
         self.trend_holder = ctk.CTkFrame(self.trend_card, fg_color="transparent")

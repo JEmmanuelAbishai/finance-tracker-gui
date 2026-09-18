@@ -1,8 +1,8 @@
 import os
 import tkinter.font as tkfont
 
-APP_NAME = "Splash"
-APP_MIN_SIZE = (1180, 720)
+APP_NAME = "「Ripple」"
+APP_MIN_SIZE = (1000, 600)
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(BASE_DIR, "data")
@@ -37,12 +37,7 @@ FONTS = {
 
 
 def init_fonts():
-    """
-    Re-resolve UI_FONT / MONO_FONT now that a Tk root exists, preferring
-    JetBrains Mono (registered via app.fonts.load_custom_fonts()) for
-    both the UI and mono roles, and rebuild FONTS IN PLACE so any module
-    that already did `from app.config import FONTS` still sees the update.
-    """
+
     global UI_FONT, MONO_FONT
 
     UI_FONT = _first_available_font(
@@ -73,8 +68,8 @@ PALETTE = {
         "border": "#333C42",
         "text": "#F3F1EB",
         "text_muted": "#8E9AA3",
-        "accent": "#2C1092",
-        "accent_hover": "#249C7E",
+        "accent": "#5E86C2",
+        "accent_hover": "#89A0C2",
         "amber": "#E3A23D",
         "coral": "#E2685A",
         "blue": "#5B9BD9",

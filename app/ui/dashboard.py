@@ -73,7 +73,7 @@ class DashboardView(ctk.CTkFrame):
         self.budget_card = ctk.CTkFrame(row, corner_radius=12, fg_color=theme["surface"])
         self.budget_card.grid(row=0, column=1, sticky="nsew", padx=(10, 0))
         ctk.CTkLabel(
-            self.budget_card, text="Budget vs. actual", font=config.FONTS["h3"], text_color=theme["text"]
+            self.budget_card, text="Budget vs. Actual", font=config.FONTS["h3"], text_color=theme["text"]
         ).pack(anchor="w", padx=18, pady=(16, 0))
         self.budget_holder = ctk.CTkFrame(self.budget_card, fg_color="transparent")
         self.budget_holder.pack(fill="both", expand=True, padx=8, pady=8)

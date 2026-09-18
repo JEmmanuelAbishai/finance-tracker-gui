@@ -1,4 +1,7 @@
+import os
+
 import customtkinter as ctk
+from PIL import Image
 
 from .. import config, database
 
@@ -10,11 +13,30 @@ class LoginView(ctk.CTkFrame):
         self.on_success = on_success
         self.mode = "login" if database.has_any_user() else "register"
         self.pack(fill="both", expand=True)
+
+        self._build_background()
         self._build()
+
+    def _build_background(self):
+        bg_path = os.path.join(
+            os.path.dirname(os.path.abspath(__file__)), "..", "assets", "images", "login_bg.png"
+        )
+        img = Image.open(bg_path).convert("RGB")
+        bg_image = ctk.CTkImage(light_image=img, dark_image=img, size=config.APP_MIN_SIZE)
+
+        self.bg_label = ctk.CTkLabel(self, image=bg_image, text="")
+        self.bg_label.image = bg_image
+        self.bg_label.pack(fill="both", expand=True)
+
+    def _debug_check_label(self):
+        print("Label mapped:", self.bg_label.winfo_ismapped())
+        print("Label size:", self.bg_label.winfo_width(), "x", self.bg_label.winfo_height())
+        print("Label pos:", self.bg_label.winfo_x(), self.bg_label.winfo_y())
+        print("Self size:", self.winfo_width(), "x", self.winfo_height())
 
     def _build(self):
         theme = self.theme
-        card = ctk.CTkFrame(self, width=380, corner_radius=16, fg_color=theme["surface"])
+        card = ctk.CTkFrame(self, width=380, corner_radius=28, fg_color=theme["surface"])
         card.place(relx=0.5, rely=0.5, anchor="center")
         card.grid_columnconfigure(0, weight=1)
 

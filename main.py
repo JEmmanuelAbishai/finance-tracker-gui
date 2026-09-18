@@ -6,7 +6,7 @@ from app.ui.app_window import AppWindow
 from app.ui.login import LoginView
 
 
-class SplashApp(ctk.CTk):
+class RippleApp(ctk.CTk):
     def __init__(self):
         super().__init__()
 
@@ -55,7 +55,7 @@ class SplashApp(ctk.CTk):
 
 
 def main():
-    app = SplashApp()
+    app = RippleApp()
     app.mainloop()
 
 
