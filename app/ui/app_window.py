@@ -51,7 +51,7 @@ class AppWindow(ctk.CTkFrame):
             sidebar, text=config.APP_NAME, font=config.FONTS["h2"], text_color=theme["text"]
         ).grid(row=0, column=0, sticky="w", padx=22, pady=(26, 0))
         ctk.CTkLabel(
-            sidebar, text="personal finance", font=config.FONTS["small"], text_color=theme["text_muted"]
+            sidebar, text="<your finance tracker>", font=config.FONTS["small"], text_color=theme["text_muted"]
         ).grid(row=1, column=0, sticky="w", padx=22, pady=(0, 22))
 
         for i, (name, _) in enumerate(self.NAV_ITEMS, start=2):

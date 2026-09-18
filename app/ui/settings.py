@@ -1,9 +1,6 @@
 from tkinter import messagebox
-
 import customtkinter as ctk
-
 from .. import config, database
-
 
 class SettingsView(ctk.CTkFrame):
     def __init__(self, parent, theme, on_appearance_change=None):
@@ -46,7 +43,7 @@ class SettingsView(ctk.CTkFrame):
         row.pack(fill="x", padx=18, pady=16)
         row.grid_columnconfigure(0, weight=1)
         ctk.CTkLabel(
-            row, text="Theme", font=config.FONTS["body"], text_color=theme["text"]
+            row, text="Theme", font=config.FONTS["body"], text_color=theme["accent"]
         ).grid(row=0, column=0, sticky="w")
         ctk.CTkLabel(
             row, text="Switch between light and dark mode.", font=config.FONTS["small"],
@@ -56,7 +53,8 @@ class SettingsView(ctk.CTkFrame):
         mode = ctk.get_appearance_mode()
         switch_var = ctk.StringVar(value=mode)
         switch = ctk.CTkSegmentedButton(
-            row, values=["Light", "Dark"], variable=switch_var, command=self._change_appearance
+            row, values=["Light", "Dark"], variable=switch_var, command=self._change_appearance,
+            selected_color="#5E86C2", selected_hover_color="#4D71A8",
         )
         switch.set(mode)
         switch.grid(row=0, column=1, rowspan=2, sticky="e")
@@ -72,7 +70,7 @@ class SettingsView(ctk.CTkFrame):
         row.pack(fill="x", padx=18, pady=14)
         row.grid_columnconfigure(0, weight=1)
         ctk.CTkLabel(
-            row, text=title, font=config.FONTS["body"], text_color=theme["text"]
+            row, text=title, font=config.FONTS["body"], text_color=theme["accent"]
         ).grid(row=0, column=0, sticky="w")
         ctk.CTkLabel(
             row, text=description, font=config.FONTS["small"], text_color=theme["text_muted"],

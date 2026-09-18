@@ -1,4 +1,3 @@
-
 from datetime import date
 from tkinter import messagebox, ttk
 
@@ -32,13 +31,14 @@ class TransactionsView(ctk.CTkFrame):
 
         pad = dict(padx=20, pady=(10, 0))
         ctk.CTkLabel(
-            card, text="Add transaction", font=config.FONTS["h3"], text_color=theme["text"]
+            card, text="Add Transaction", font=config.FONTS["h3"], text_color=theme["text"]
         ).grid(row=0, column=0, sticky="w", padx=20, pady=(20, 6))
 
         self.type_var = ctk.StringVar(value="expense")
         ctk.CTkSegmentedButton(
             card, values=["expense", "income"], variable=self.type_var,
             command=lambda _v: self._refresh_categories(),
+            selected_color="#5E86C2", selected_hover_color="#4D71A8",
         ).grid(row=1, column=0, sticky="ew", **pad)
 
         ctk.CTkLabel(
@@ -53,7 +53,8 @@ class TransactionsView(ctk.CTkFrame):
         ).grid(row=4, column=0, sticky="w", **pad)
         self.category_var = ctk.StringVar(value=config.EXPENSE_CATEGORIES[0])
         self.category_menu = ctk.CTkOptionMenu(
-            card, variable=self.category_var, values=config.EXPENSE_CATEGORIES
+            card, variable=self.category_var, values=config.EXPENSE_CATEGORIES,
+            fg_color="#5E86C2", button_color="#5E86C2", button_hover_color="#4D71A8",
         )
         self.category_menu.grid(row=5, column=0, sticky="ew", padx=20, pady=(2, 0))
 
@@ -79,7 +80,7 @@ class TransactionsView(ctk.CTkFrame):
         btn_wrap.grid(row=11, column=0, sticky="ew", padx=20, pady=(14, 20))
 
         ctk.CTkButton(
-            btn_wrap, text="Add transaction", command=self._add_transaction,
+            btn_wrap, text="Add Transaction", command=self._add_transaction,
             fg_color=theme["accent"], hover_color=theme["accent_hover"],
         ).pack(fill="x")
 
@@ -100,10 +101,10 @@ class TransactionsView(ctk.CTkFrame):
         toolbar = ctk.CTkFrame(card, fg_color="transparent")
         toolbar.grid(row=0, column=0, columnspan=2, sticky="ew", padx=16, pady=(16, 6))
         ctk.CTkLabel(
-            toolbar, text="All transactions", font=config.FONTS["h3"], text_color=theme["text"]
+            toolbar, text="All Transactions", font=config.FONTS["h3"], text_color=theme["text"]
         ).pack(side="left")
         ctk.CTkButton(
-            toolbar, text="Delete selected", width=140, command=self._delete_selected,
+            toolbar, text="Delete Selected", width=140, command=self._delete_selected,
             fg_color="transparent", border_width=1, border_color=theme["border"],
             text_color=theme["text_muted"], hover_color=theme["surface_alt"],
         ).pack(side="right")
@@ -140,8 +141,8 @@ class TransactionsView(ctk.CTkFrame):
         )
         style.configure(
             "Ledger.Vertical.TScrollbar",
-            background=theme["border"],      
-            troughcolor=theme["surface"],     
+            background=theme["border"],
+            troughcolor=theme["surface"],
             bordercolor=theme["surface"],
             lightcolor=theme["border"],
             darkcolor=theme["border"],
@@ -160,7 +161,7 @@ class TransactionsView(ctk.CTkFrame):
         )
         style.map(
             "Ledger.Vertical.TScrollbar",
-            background=[("active", theme["text_muted"])],  
+            background=[("active", theme["text_muted"])],
         )
         style.map(
             "Ledger.Horizontal.TScrollbar",
