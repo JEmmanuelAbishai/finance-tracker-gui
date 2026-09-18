@@ -1,9 +1,16 @@
+import os
+
 import customtkinter as ctk
 
 from app import config, database
 from app.fonts import load_custom_fonts
 from app.ui.app_window import AppWindow
 from app.ui.login import LoginView
+
+
+def get_icon_path():
+    base = config.get_base_dir()
+    return os.path.join(base, "app", "assets", "icon.ico")
 
 
 class RippleApp(ctk.CTk):
@@ -16,6 +23,14 @@ class RippleApp(ctk.CTk):
         self.title(config.APP_NAME)
         self.geometry(f"{config.APP_MIN_SIZE[0]}x{config.APP_MIN_SIZE[1]}")
         self.minsize(*config.APP_MIN_SIZE)
+        self.maxsize(*config.APP_MIN_SIZE)
+        self.resizable(False, False)
+
+        icon_path = get_icon_path()
+        if os.path.exists(icon_path):
+            self.iconbitmap(icon_path)
+        else:
+            print(f"[icon] Warning: icon not found at {icon_path}")
 
         ctk.set_appearance_mode("dark")
         ctk.set_default_color_theme("green")

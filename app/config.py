@@ -1,11 +1,28 @@
 import os
+import sys
 import tkinter.font as tkfont
 
-APP_NAME = "「Ripple」"
+APP_NAME = "Ripple"
 APP_MIN_SIZE = (1000, 600)
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_DIR = os.path.join(BASE_DIR, "data")
+
+def get_base_dir():
+    if getattr(sys, "frozen", False):
+        return sys._MEIPASS
+    return os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
+def get_data_dir():
+    if getattr(sys, "frozen", False):
+        base = os.path.join(os.environ["LOCALAPPDATA"], APP_NAME)
+    else:
+        base = os.path.join(get_base_dir(), "data")
+    os.makedirs(base, exist_ok=True)
+    return base
+
+
+BASE_DIR = get_base_dir()
+DATA_DIR = get_data_dir()
 DB_PATH = os.path.join(DATA_DIR, "finance_tracker.db")
 
 
